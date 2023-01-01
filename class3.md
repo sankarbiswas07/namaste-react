@@ -16,7 +16,14 @@
  * Tree Shaking - Removing un-wanter
  * 
  * Transitive Dependencies.
+ * site - https://parceljs.org/
 
-> npx parcel index.html  or   npm parcel --build index.html
+
+> npx parcel index.html ***or*** npm parcel --build index.html
 
 # **Class 3**
+
+> Bable basic configuration
+
+> always have to put keys(unique identifier) in my array children's to get rid of error
+

@@ -32,6 +32,18 @@ const heading = React.createElement("div", {
   name: "some name"
 }, [heading1, heading2])
 
+
+
+{/* <div class="header">
+<h1>Namaste React</h1>
+<ul>
+  <li>About us</li>
+  <li>course</li>
+  <li>help</li>
+</ul>
+</div> */}
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
 root.render(heading)
