@@ -23,7 +23,12 @@
 
 # **Class 3**
 
-> Bable basic configuration
+> Babel basic configuration
 
-> always have to put keys(unique identifier) in my array children's to get rid of error
+> Always have to put keys(unique identifier) in my array children's to get rid of error
 
+> JSX is best, working with bebel. we won't use React.createElement(). as deep level html  get messy which reduce code readability and maintenance get hard. So, we will use JSX. JSX syntax is like HTML(not HTML inside JS).JSX uses react.createElement behind the scene.
+
+
+
+> React Component => Class component | functional component
