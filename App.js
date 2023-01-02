@@ -19,19 +19,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading1 = React.createElement("h1", {
-  id: "title" //this is props object which is the properties of a dom
-}, "Heading 1")
+// const heading1 = React.createElement("h1", {
+//   id: "title" //this is props object which is the properties of a dom
+// }, "Heading 1")
 
-const heading2 = React.createElement("h2", {
-  id: "description" //this is props object which is the properties of a dom
-}, "Heading 2")
+// const heading2 = React.createElement("h2", {
+//   id: "description" //this is props object which is the properties of a dom
+// }, "Heading 2")
 
-const heading = React.createElement("div", {
-  id: "some", //this is props object which is the properties of a dom
-  name: "some name"
-}, [heading1, heading2])
+// const heading = React.createElement("div", {
+//   id: "some", //this is props object which is the properties of a dom
+//   name: "some name"
+// }, [heading1, heading2])
+
+const Title = () => (
+  <h1 id="title" key="h1">
+    Namaste React
+  </h1>
+)
+
+const HeaderComponent = () => (
+  <div>
+    <Title />
+    <h2>Namaste react foundation component</h2>
+    <h2> this is h2 tag</h2>
+  </div>
+)
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
-root.render(heading)
+// root.render(heading)
+root.render(<HeaderComponent />)

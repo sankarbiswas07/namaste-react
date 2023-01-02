@@ -32,3 +32,5 @@
 
 
 > React Component => Class component | functional component
+* Names with component starts with capital letter - not mandatory - good practice
+* Component will render: syntax : root.render(<jsx_component_name />)
