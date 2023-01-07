@@ -7,5 +7,15 @@ const WhoIam = () => {
   )
 }
 
+/**
+ * DOM TREE - 
+ * 
+ * 1. A AppLayout.
+ *    1.1 Heder
+ *    1.2 Body
+ *        1.2.1 RestaurantCard
+ *    1.3 Footer
+ * **/
+
 const root = ReactDom.createRoot(document.getElementById("root"))
 root.render(<WhoIam />)
