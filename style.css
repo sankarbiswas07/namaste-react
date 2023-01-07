@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul.side-menu {
+  list-style: none;
+  display: flex;
+  align-items: center
+}
+
+ul.side-menu>li {
+  margin-right: 60px;
+}
+
+.brand {
+  display: flex;
+}
+
+.brand>img {
+  height: 50px;
+}
