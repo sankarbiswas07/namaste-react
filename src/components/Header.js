@@ -4,11 +4,14 @@ const Header = () => {
   return (
     <div className="header">
       <div className="brand">
-        <img src="https://e7.pngegg.com/pngimages/141/383/png-clipart-logo-product-design-brand-gps-coordinates-text-orange-thumbnail.png" />
+        <img src="https://w7.pngwing.com/pngs/55/100/png-transparent-swiggy-hd-logo-thumbnail.png" />
         <h3> FoodVilla</h3>
       </div>
       <ul className="side-menu">
-        <li>Search</li>
+        <li>
+          <input type="text" />
+          <input type="button" value="Search" />
+        </li>
         <li>Offers</li>
         <li>Help</li>
         <li>Sankar P...</li>
