@@ -39,6 +39,10 @@ ul.side-menu>li>input[type=button] {
   margin-right: 20px;
 }
 
+.brand>small {
+  margin-left: 30px;
+}
+
 .restaurant-list {
   display: flex;
   /* justify-content: space-between; */
