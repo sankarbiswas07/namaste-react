@@ -3,9 +3,18 @@ import { useState } from "react"
 import { restaurantList } from "../constants"
 import RestaurantCard from "./RestaurantCard"
 
+
+
 const Body = () => {
   const [searchText, setSearchText] = useState("")
   const [restaurants, setRestaurantList] = useState(restaurantList)
+
+  const clearSearch = () => {
+    if (!searchText.trim()) return false
+    console.log("valid clear search request")
+    setRestaurantList(restaurantList)
+    setSearchText("")
+  }
 
   return (
     <>
@@ -23,6 +32,9 @@ const Body = () => {
           }
           ))
         }} />
+
+      {/* reset search */}
+      <input type="button" value="Clear" onClick={() => { clearSearch() }} />
 
       {/* list section */}
       <div className="restaurant-list">
