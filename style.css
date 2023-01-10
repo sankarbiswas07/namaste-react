@@ -23,10 +23,20 @@ ul.side-menu>li {
   /* cursor: pointer; */
 }
 
-ul.side-menu>li>input[type=button] {
+/* ul.side-menu>li>input[type=button] {
   background-color: orangered;
   margin-left: 10px;
   cursor: pointer;
+} */
+
+input[type=button] {
+  background-color: orangered;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+input[type=text] {
+  margin-left: 10px;
 }
 
 .brand {

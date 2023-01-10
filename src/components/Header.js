@@ -6,10 +6,10 @@ import "../../style.css"
 const Header = () => {
   const [searchText, setSearchText] = useState()
 
-  function setSearchTextState(e) {
-    console.log(e.target.value)
-    setSearchText(e.target.value)
-  }
+  // function setSearchTextState(e) {
+  //   console.log(e.target.value)
+  //   setSearchText(e.target.value)
+  // }
 
   return (
     <div className="header">
@@ -19,10 +19,10 @@ const Header = () => {
         <small>{searchText}</small>
       </div>
       <ul className="side-menu">
-        <li>
+        {/* <li>
           <input type="text" onChange={setSearchTextState} placeholder="Restaurant name / cuisine" />
           <input type="button" value="Search" /><br />
-        </li>
+        </li> */}
         <li>Offers</li>
         <li>Help</li>
         <li>Sankar P...</li>
