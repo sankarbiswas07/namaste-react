@@ -29,8 +29,26 @@ ul.side-menu>li {
   cursor: pointer;
 } */
 
-input[type=button] {
-  background-color: orangered;
+.search-btn {
+  background-color: rgb(230, 122, 34);
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.search-btn-line {
+  background-color: rgb(70, 201, 168);
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.clear-btn {
+  background-color: rgb(238, 35, 35);
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.clear-btn-line {
+  background-color: rgb(243, 243, 243);
   margin-left: 10px;
   cursor: pointer;
 }

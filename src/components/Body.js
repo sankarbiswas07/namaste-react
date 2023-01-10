@@ -8,12 +8,16 @@ import RestaurantCard from "./RestaurantCard"
 const Body = () => {
   const [searchText, setSearchText] = useState("")
   const [restaurants, setRestaurantList] = useState(restaurantList)
+  //used for controlling the clear button style
+  const [inSearch, setInSearch] = useState(false)
+  let whichClearBtn = `clear-btn${inSearch ? "" : "-line"}`
 
   const clearSearch = () => {
-    if (!searchText.trim()) return false
+    if (!inSearch) return false
     console.log("valid clear search request")
-    setRestaurantList(restaurantList)
-    setSearchText("")
+    setRestaurantList(restaurantList) // reset the restaurants list
+    setSearchText("") // rest the search input box
+    setInSearch(false) //set a state to false as true means search has been click at least once
   }
 
   return (
@@ -24,17 +28,20 @@ const Body = () => {
         onChange={(e) => { setSearchText(e.target.value) }}
         value={searchText} />
       <input type="button" value="Search"
+        className="search-btn"
         onClick={() => {
-          setRestaurantList(restaurants.filter(restaurant => {
+          if (!searchText?.trim()) return clearSearch()
+          setInSearch(true)
+          return setRestaurantList(restaurants.filter(restaurant => {
             // console.log(restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText.toLowerCase())))
-            return restaurant?.data?.name?.toLowerCase().includes(searchText?.toLowerCase())
-              || restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText.toLowerCase())).length
+            return restaurant?.data?.name?.toLowerCase().includes(searchText?.trim()?.toLowerCase())
+              || restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText?.trim()?.toLowerCase())).length
           }
           ))
         }} />
 
       {/* reset search */}
-      <input type="button" value="Clear" onClick={() => { clearSearch() }} />
+      <input className={whichClearBtn} type="button" value="Clear" onClick={() => { clearSearch() }} />
 
       {/* list section */}
       <div className="restaurant-list">
