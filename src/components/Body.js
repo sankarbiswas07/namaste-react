@@ -1,24 +1,30 @@
 import "../../style.css"
-import { useState } from "react"
-import { restaurantList } from "../constants"
+import { useState, useEffect } from "react"
+// import { restaurantList } from "../constants"
 import RestaurantCard from "./RestaurantCard"
 
 
 
 const Body = () => {
   const [searchText, setSearchText] = useState("")
-  const [restaurants, setRestaurantList] = useState(restaurantList)
-  //used for controlling the clear button style
-  const [inSearch, setInSearch] = useState(false)
-  let whichClearBtn = `clear-btn${inSearch ? "" : "-line"}`
+  const [allRestaurants, setAllRestaurants] = useState([])
+  const [filteredRestaurants, setFilteredRestaurants] = useState([])
 
-  const clearSearch = () => {
-    if (!inSearch) return false
-    console.log("valid clear search request")
-    setRestaurantList(restaurantList) // reset the restaurants list
-    setSearchText("") // rest the search input box
-    setInSearch(false) //set a state to false as true means search has been click at least once
+  useEffect(() => { getApiData() }, [])
+
+  async function getApiData() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    )
+    const json = await data.json()
+    // Optional Chaining
+    const cardData = json?.data?.cards[2]?.data?.data?.cards
+    console.log(cardData)
+    setAllRestaurants(cardData);
+    setFilteredRestaurants(cardData);
   }
+  // not render component (Early return)
+  // if (!allRestaurants) return null;
 
   return (
     <>
@@ -27,12 +33,12 @@ const Body = () => {
         placeholder="Restaurant name / cuisine"
         onChange={(e) => { setSearchText(e.target.value) }}
         value={searchText} />
+
       <input type="button" value="Search"
         className="search-btn"
         onClick={() => {
-          if (!searchText?.trim()) return clearSearch()
-          setInSearch(true)
-          return setRestaurantList(restaurants.filter(restaurant => {
+
+          return setFilteredRestaurants(allRestaurants.filter(restaurant => {
             // console.log(restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText.toLowerCase())))
             return restaurant?.data?.name?.toLowerCase().includes(searchText?.trim()?.toLowerCase())
               || restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText?.trim()?.toLowerCase())).length
@@ -40,13 +46,10 @@ const Body = () => {
           ))
         }} />
 
-      {/* reset search */}
-      <input className={whichClearBtn} type="button" value="Clear" onClick={() => { clearSearch() }} />
-
       {/* list section */}
       <div className="restaurant-list">
         {
-          restaurants.map(restaurant => {
+          filteredRestaurants.map(restaurant => {
             return (<RestaurantCard {...restaurant.data} key={restaurant.data.id} />)
           })
         }
