@@ -29,6 +29,10 @@ ul.side-menu>li {
   cursor: pointer;
 } */
 
+.search-height {
+  height: 30px;
+}
+
 .search-btn {
   background-color: rgb(230, 122, 34);
   margin-left: 10px;
@@ -75,6 +79,19 @@ input[type=text] {
   display: flex;
   /* justify-content: space-between; */
   flex-wrap: wrap;
+}
+
+.shimmer-restaurant-card {
+  display: flex;
+  width: 220px;
+  min-height: 350px;
+  margin: 10px
+}
+
+.shimmer {
+  margin: 0 !important;
+  height: auto;
+  width: auto;
 }
 
 .restaurant-card {

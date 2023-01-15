@@ -1,7 +1,8 @@
 import "../../style.css"
-import { useState, useEffect } from "react"
 // import { restaurantList } from "../constants"
+import { useState, useEffect } from "react"
 import RestaurantCard from "./RestaurantCard"
+import { RestaurantCardSkeleton } from "./Shimmer"
 
 
 
@@ -11,6 +12,21 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
 
   useEffect(() => { getApiData() }, [])
+
+  // A Few cases
+  // not render component (Early return)
+  // if (!allRestaurants) return null;
+  if (!allRestaurants?.length) {
+    console.log("----")
+    return (
+      <>
+        <div className="search-height"></div>
+        <div className="restaurant-list">
+          {Array(30).fill(true).map(() => (<RestaurantCardSkeleton />))}
+        </div>
+      </>
+    )
+  }
 
   async function getApiData() {
     const data = await fetch(
@@ -23,19 +39,18 @@ const Body = () => {
     setAllRestaurants(cardData);
     setFilteredRestaurants(cardData);
   }
-  // not render component (Early return)
-  // if (!allRestaurants) return null;
 
   return (
     <>
       {/* search section */}
       <input type="text"
+        className="search-height"
         placeholder="Restaurant name / cuisine"
         onChange={(e) => { setSearchText(e.target.value) }}
         value={searchText} />
 
       <input type="button" value="Search"
-        className="search-btn"
+        className="search-btn search-height"
         onClick={() => {
 
           return setFilteredRestaurants(allRestaurants.filter(restaurant => {
@@ -48,6 +63,7 @@ const Body = () => {
 
       {/* list section */}
       <div className="restaurant-list">
+        {/* <RestaurantCardSkeleton /> */}
         {
           filteredRestaurants.map(restaurant => {
             return (<RestaurantCard {...restaurant.data} key={restaurant.data.id} />)
