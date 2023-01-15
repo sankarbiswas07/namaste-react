@@ -43,27 +43,27 @@ const Body = () => {
   return (
     <>
       {/* search section */}
-      <input type="text"
-        className="search-height"
-        placeholder="Restaurant name / cuisine"
-        onChange={(e) => { setSearchText(e.target.value) }}
-        value={searchText} />
+      <div className="search-bar">
+        <input type="text"
+          className="search-input"
+          placeholder="Restaurant name / cuisine"
+          onChange={(e) => { setSearchText(e.target.value) }}
+          value={searchText} />
 
-      <input type="button" value="Search"
-        className="search-btn search-height"
-        onClick={() => {
+        <div
+          className="search-btn search-height"
+          onClick={() => {
+            return setFilteredRestaurants(allRestaurants.filter(restaurant => {
+              return restaurant?.data?.name?.toLowerCase().includes(searchText?.trim()?.toLowerCase())
+                || restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText?.trim()?.toLowerCase())).length
+            }
+            ))
+          }}>Search</div>
+      </div>
 
-          return setFilteredRestaurants(allRestaurants.filter(restaurant => {
-            // console.log(restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText.toLowerCase())))
-            return restaurant?.data?.name?.toLowerCase().includes(searchText?.trim()?.toLowerCase())
-              || restaurant?.data?.cuisines?.filter(e => e?.trim()?.toLowerCase()?.includes(searchText?.trim()?.toLowerCase())).length
-          }
-          ))
-        }} />
 
       {/* list section */}
       <div className="restaurant-list">
-        {/* <RestaurantCardSkeleton /> */}
         {
           filteredRestaurants.map(restaurant => {
             return (<RestaurantCard {...restaurant.data} key={restaurant.data.id} />)
