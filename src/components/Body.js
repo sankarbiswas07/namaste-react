@@ -22,7 +22,7 @@ const Body = () => {
       <>
         <div className="search-height"></div>
         <div className="restaurant-list">
-          {Array(30).fill(true).map(() => (<RestaurantCardSkeleton />))}
+          {Array(30).fill("").map((e, i) => (<RestaurantCardSkeleton key={i} />))}
         </div>
       </>
     )
