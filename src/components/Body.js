@@ -4,8 +4,6 @@ import { useState, useEffect } from "react"
 import RestaurantCard from "./RestaurantCard"
 import { RestaurantCardSkeleton } from "./Shimmer"
 
-
-
 const Body = () => {
   const [searchText, setSearchText] = useState("")
   const [allRestaurants, setAllRestaurants] = useState([])
