@@ -61,7 +61,7 @@ const Body = () => {
 
 
       {/* list section */}
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
         {
           filteredRestaurants.map(restaurant => {
             return (<RestaurantCard {...restaurant.data} key={restaurant.data.id} />)
