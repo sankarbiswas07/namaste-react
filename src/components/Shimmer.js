@@ -2,7 +2,7 @@ import { ShimmerPostItem } from "react-shimmer-effects-18";
 
 export const RestaurantCardSkeleton = () => {
   return (
-    <div className="shimmer-restaurant-card">
+    <div className="shimmer-restaurant-cardh-[350] w-[250] m-5 border-2 rounded-md hover:drop-shadow-xl p-3">
       <ShimmerPostItem
         imageType="thumbnail"
         imageWidth={220}

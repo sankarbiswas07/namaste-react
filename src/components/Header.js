@@ -1,10 +1,8 @@
 import { useState } from "react"
-import "../../style.css"
-
-
 
 const Header = () => {
-  const [searchText, setSearchText] = useState()
+  const [searchText, setSearchText] = useState("")
+  const [filteredRestaurants, setFilteredRestaurants] = useState([])
 
   return (
     <div className="h-14  bg-blue-400 mb-6">
