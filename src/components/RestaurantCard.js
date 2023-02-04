@@ -7,7 +7,8 @@ const RestaurantCard = ({
   cuisines,
   cloudinaryImageId,
   lastMileTravelString,
-  id
+  id,
+  search
 }) => {
   return (
     <Link to={"/restaurant/" + id}>
@@ -16,6 +17,7 @@ const RestaurantCard = ({
         <h3 className="mb-3 font-bold font">{name}</h3>
         <h4 className="mb-3">{cuisines.join(", ")}</h4>
         <span className="mb-5">Distance - {lastMileTravelString}</span>
+        <h5>{search}</h5>
       </div>
     </Link>
   )

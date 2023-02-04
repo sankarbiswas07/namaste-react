@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom/client"
 import { Outlet, Link, RouterProvider, createBrowserRouter } from "react-router-dom"
 
@@ -8,15 +8,21 @@ import Footer from "./components/Footer";
 import About from './components/About';
 import Contact from "./components/Contact";
 import RestaurantDetails from './components/RestaurantDetails';
+import SearchContext from './Contexts/SearchContext';
 
 const AppLayout = () => {
+
+  const [search, setSearch] = useState("")
+
   return (
     <div className="html">
-      <Header />
-      {/* <Body /> */}
-      <Outlet />
-      <Footer />
-    </div>
+      <SearchContext.Provider value={{ search, setSearch }}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </SearchContext.Provider>
+
+    </div >
   )
 }
 
