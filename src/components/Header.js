@@ -1,10 +1,10 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import SearchContext from "../Contexts/SearchContext"
 import { filterData } from "../utils/helper"
 
 const Header = () => {
   const { search, setSearch } = useContext(SearchContext)
-
+  console.log("header =>", search)
   return (
     <div className="h-14  bg-blue-400 mb-6">
       <div className="w-[1024] flex justify-between m-auto  ">
@@ -20,6 +20,7 @@ const Header = () => {
               placeholder="Search for anything..."
               type="text"
               onChange={(e) => { setSearch(e.target.value) }}
+              // onChange={(e) => { console.log("=> ", e.target.value) }}
               value={search}
               name="search" />
           </label>

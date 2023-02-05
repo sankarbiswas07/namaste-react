@@ -1,8 +1,12 @@
-import "../../style.css"
 
+import { useContext } from "react"
+import SearchContext from "../Contexts/SearchContext"
 const Footer = () => {
+  const { search } = useContext(SearchContext)
   return (
-    <h3>Footer will be here</h3>
+    <div className="mb-[200]">
+      <h3>Footer will be here - {search}</h3>
+    </div>
   )
 }
 

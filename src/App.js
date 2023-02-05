@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactDom from "react-dom/client"
+import ReactDom from "react-dom/client";
 import { Outlet, Link, RouterProvider, createBrowserRouter } from "react-router-dom"
 
 import Header from "./components/Header";
@@ -12,16 +12,19 @@ import SearchContext from './Contexts/SearchContext';
 
 const AppLayout = () => {
 
-  const [search, setSearch] = useState("")
+  // it will modify with my useEffect()
+  // context default value overRide here with xx
+  const [search, setSearch] = useState("xxx")
 
   return (
     <div className="html">
-      <SearchContext.Provider value={{ search, setSearch }}>
+      <SearchContext.Provider
+        value={{ search, setSearch }}>
         <Header />
         <Outlet />
-        <Footer />
+        {/* <Footer /> */}
       </SearchContext.Provider>
-
+      <Footer />
     </div >
   )
 }

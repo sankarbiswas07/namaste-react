@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom"
 import { IMG_CDN_URL } from "../constants"
 
+import { useContext } from "react"
+import SearchContext from "../Contexts/SearchContext"
 
 const RestaurantCard = ({
   name,
   cuisines,
   cloudinaryImageId,
   lastMileTravelString,
-  id,
-  search
+  id
 }) => {
+
+  const { search } = useContext(SearchContext)
   return (
     <Link to={"/restaurant/" + id}>
       <div className="h-[350] w-[250] m-5 border-2 rounded-md hover:drop-shadow-xl p-3">

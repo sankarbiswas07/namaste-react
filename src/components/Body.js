@@ -1,6 +1,3 @@
-import { useContext } from "react"
-import SearchContext from "../Contexts/SearchContext"
-
 import useRestaurants from "../hooks/useRestaurants"
 import RestaurantCard from "./RestaurantCard"
 import { RestaurantCardSkeleton } from "./Shimmer"
@@ -8,7 +5,6 @@ import { RestaurantCardSkeleton } from "./Shimmer"
 
 const Body = () => {
   const allRestaurants = useRestaurants()
-  const { search } = useContext(SearchContext)
 
   if (!allRestaurants?.length) {
     console.log("Calling useRestaurants")
@@ -23,7 +19,7 @@ const Body = () => {
     <div className="flex flex-wrap">
       {
         allRestaurants.map(restaurant => {
-          return (<RestaurantCard {...restaurant.data} search={search} key={restaurant.data.id} />)
+          return (<RestaurantCard {...restaurant.data} key={restaurant.data.id} />)
         })
       }
     </div>
