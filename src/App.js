@@ -14,7 +14,7 @@ const AppLayout = () => {
 
   // it will modify with my useEffect()
   // context default value overRide here with xx
-  const [search, setSearch] = useState("xxx")
+  const [search, setSearch] = useState("")
 
   return (
     <div className="html">

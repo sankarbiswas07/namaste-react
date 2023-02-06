@@ -2,7 +2,7 @@ import { createContext } from "react"
 
 // First context default value
 const SearchContext = createContext({
-  search: "yo yo "
+  search: ""
 })
 
 SearchContext.displayName = "SearchContext"
