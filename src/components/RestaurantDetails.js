@@ -30,27 +30,38 @@ const RestaurantDetails = () => {
           rounded-lg border-solid border-2
         border-indigo-50
         ">
-          <div className='pt-5 pb-5'>
-            <span className='text-indigo-100 text-xl font-bold'>Today's Menu</span>
+          <div className="pt-5 pb-5 text-indigo-400">
+            <h1 className="text-xl font-bold">
+              Today's Menu
+            </h1>
           </div>
           {menuArr.map((item, i) => {
             return (
               <div
                 key={i}
                 className="
+                flex
+                items-center
+                justify-between
                 bg-white 
                 p-3 mb-2 mt-2
                 rounded-lg border-solid border-2
                 border-indigo-100 hover:border-indigo-400
+                group
+                cursor-pointer
                 "
               >
-                {item?.name}
+                <span>{item?.name}</span>
+                <div className="
+                pt-1 pb-1 pl-3 pr-3  text-indigo-50
+                rounded-lg bg-indigo-100 group-hover:bg-indigo-400
+                ">Add</div>
               </div>
             )
           })}
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
