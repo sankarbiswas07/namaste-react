@@ -12,8 +12,8 @@ const Header = () => {
   }
 
   return (
-    <div className="h-14  bg-blue-400 mb-6 flex justify-center items-center">
-      <div className="w-[1024] flex justify-between m-auto">
+    <div className=" bg-blue-400 p-3 flex justify-center items-center">
+      <div className="md:container md:mx-auto px-4 flex justify-between m-auto">
         <div className="brand flex items-center">
           <h3> FoodVilla</h3>
         </div>
