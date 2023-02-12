@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom/client";
-import { Outlet, Link, RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom"
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,8 @@ import Contact from "./components/Contact";
 import RestaurantDetails from './components/RestaurantDetails';
 import SearchContext from './Contexts/SearchContext';
 import { Provider } from "react-redux";
+import store from './utils/store';
+
 
 const AppLayout = () => {
 
@@ -18,7 +20,7 @@ const AppLayout = () => {
   const [search, setSearch] = useState("")
 
   return (
-    <Provider>
+    <Provider store={store}>
       <SearchContext.Provider
         value={{ search, setSearch }}>
         <Header />
@@ -64,6 +66,13 @@ const AppRouter = createBrowserRouter([{
  * @reduxjs/toolkit job => core => managing redux core and it's slices and everything core to redux
  * 
  *  - configureStore({}) : generally store `provide` to the whole application(App.js) user Provider component( use react-redux)
+ *  - make redux store slice eg: cartSlice
+ *      - name: "cart"
+ *      - initialState: {}
+ *      - reducer: {                              // this will have an mapping with action, what action will call what reducer function
+ *                    addItem: () => {}           // here the key `addItem` is the action && value `()=>{}`, a reducer function
+ *                    
+ *                 }
  * 
  * 
  * react-redux => bridge between react and redux
@@ -72,6 +81,8 @@ const AppRouter = createBrowserRouter([{
  * 
  * 
  * store.js => create own redux store [configureStore(())]
+ * 
+ *
  * 
  * **/
 

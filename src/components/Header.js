@@ -34,10 +34,10 @@ const Header = () => {
             onClick={() => { searchAction() }}>Search</div>
         </div>
         <ul className="side-menu flex items-center">
-          <li className="pl-2">Offers</li>
-          <li className="pl-2">Help</li>
-          <li className="pl-2">Sankar P...</li>
-          <li className="pl-2">Cart</li>
+          <li className="pl-2 m-2">Offers</li>
+          <li className="pl-2 m-2">Help</li>
+          <li className="pl-2 m-2">Sankar P...</li>
+          <li className="pl-2 m-2">Cart</li>
         </ul>
       </div>
     </div>
