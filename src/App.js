@@ -20,6 +20,7 @@ const AppLayout = () => {
   const [search, setSearch] = useState("")
 
   return (
+    // for documentation : go to utils/store/index
     <Provider store={store}>
       <SearchContext.Provider
         value={{ search, setSearch }}>
@@ -58,29 +59,6 @@ const AppRouter = createBrowserRouter([{
  *    1.2 Body
  *        1.2.1 RestaurantCard
  *    1.3 Footer
- * 
- * 
- * REDUX IMPLEMENTATION:
- * 
- * npm i
- * @reduxjs/toolkit job => core => managing redux core and it's slices and everything core to redux
- * 
- *  - configureStore({}) : generally store `provide` to the whole application(App.js) user Provider component( use react-redux)
- *  - make redux store slice eg: cartSlice
- *      - name: "cart"
- *      - initialState: {}
- *      - reducer: {                                           // this will have an mapping with action, what action will call what reducer function
- *                    addItem: (state, action) => {}           // here the key `addItem` is the action && value `()=>{}`, a reducer function, state is the initial state
- *                    
- *                 }
- * 
- * 
- * react-redux => bridge between react and redux
- * 
- *  - Provider : component type: wrap it || <Provider />
- * 
- * 
- * store.js => create own redux store [configureStore(())]
  * 
  *
  * 

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Use a core function `createSlice()` to create a slice
+//  Use a core function `createSlice()` to create a slice
+// `createSlice()` returns is an object which has `reducer` and `actions
 const cartSlice = createSlice({
   name: "cart", //give it a name
   initialState: {
@@ -9,7 +10,7 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       // Here addItem: (`state`, action) : state is the previous state
-      // Here addItem: (state, `action`) : action is the previous state
+      // Here addItem: (state, `action`) : action is ?
       state.items.push(action.payload) // here we are directly modified the state
 
       // NOTE:
@@ -27,8 +28,8 @@ const cartSlice = createSlice({
 
 /**
  *   EXPORT :
- *    - Actions:
- *    - Reducer: 
+ *    - Actions: All the actions for dispatch functionality frm component
+ *    - Reducer: return a single object which includes the reducers
  */
 
 // export actions which will be called when you dispatch an action from a component
