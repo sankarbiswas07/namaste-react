@@ -17,9 +17,9 @@ export default store
  *    -  Update cycle : When you click a button, it will `dispatch` an `action` which has a `reducer` function which will "update" a `slice` of a `redux store`
  *    -  Fetch cycle : useSelector hook from react-redux provide access to the store (a specific slice of the store)
  * 
- * ===================================
- *  Update cycle :Work Flow Setup
- * ===================================
+ * =====================================================
+ *  Update cycle :Work Flow Setup : MenuItem Component
+ * =====================================================
  * 
  * Create Store
  *  - configureStore() - RTK | npm i @reduxjs/toolkit : Managing redux core and it's slices and everything core to redux
@@ -37,6 +37,7 @@ export default store
  *          reducers: {
  *              // Here the key `addItem` is the action && value `()=>{}`, a reducer function
  *              // (`state`, action) : `state` is the initial state
+ *              // (state, `action`) : `action` has a key `payload` which has the data( action's payload). what is reducer. see above
  *             addItem: (state, action)=> { state= action.payload}
  *          }
  *      })
@@ -53,9 +54,9 @@ export default store
  *         }
  * }
  * 
- * ===================================
- *  Fetch cycle :Work Flow Setup
- * ===================================
+ * =====================================================
+ *  Fetch cycle :Work Flow Setup : Header Component
+ * =====================================================
  *   - react-redux: provide this selector to give access to the store directly | actually the store slice: eg: store.cart.items
  *     const cartItem = useSelector(store => store.cart.items)
  *

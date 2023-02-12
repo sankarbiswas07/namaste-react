@@ -10,7 +10,7 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       // Here addItem: (`state`, action) : state is the previous state
-      // Here addItem: (state, `action`) : action is ?
+      // Here addItem: (state, `action`) : action.payload has the data
       state.items.push(action.payload) // here we are directly modified the state
 
       // NOTE:

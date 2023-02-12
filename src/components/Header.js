@@ -8,7 +8,7 @@ const Header = () => {
 
   const { setSearch } = useContext(SearchContext)
 
-  // react-redux: provide this selector to give access to the store directly
+  // react-redux: provide this selector  (subscriber)to give access to the store directly
   // actually the store slice: eg: store.cart.items
   const cartItem = useSelector(store => store.cart.items)
 

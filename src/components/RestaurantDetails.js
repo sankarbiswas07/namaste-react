@@ -1,4 +1,5 @@
 import useRestaurant from '../hooks/useRestaurant';
+import MenuItem from './MenuItem';
 
 const RestaurantDetails = () => {
 
@@ -35,30 +36,7 @@ const RestaurantDetails = () => {
               Today's Menu
             </h1>
           </div>
-          {menuArr.map((item, i) => {
-            return (
-              <div
-                key={i}
-                className="
-                flex
-                items-center
-                justify-between
-                bg-white 
-                p-3 mb-2 mt-2
-                rounded-lg border-solid border-2
-                border-indigo-100 hover:border-indigo-400
-                group
-                cursor-pointer
-                "
-              >
-                <span>{item?.name}</span>
-                <div className="
-                pt-1 pb-1 pl-3 pr-3  text-indigo-50
-                rounded-lg bg-indigo-100 group-hover:bg-indigo-400
-                ">Add</div>
-              </div>
-            )
-          })}
+          {menuArr.map((item, i) => <MenuItem key={i} {...item} />)}
         </div>
       </div>
     </div >
