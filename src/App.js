@@ -9,6 +9,7 @@ import About from './components/About';
 import Contact from "./components/Contact";
 import RestaurantDetails from './components/RestaurantDetails';
 import SearchContext from './Contexts/SearchContext';
+import { Provider } from "react-redux";
 
 const AppLayout = () => {
 
@@ -17,7 +18,7 @@ const AppLayout = () => {
   const [search, setSearch] = useState("")
 
   return (
-    <div className="html">
+    <Provider>
       <SearchContext.Provider
         value={{ search, setSearch }}>
         <Header />
@@ -25,7 +26,7 @@ const AppLayout = () => {
         {/* <Footer /> */}
       </SearchContext.Provider>
       <Footer />
-    </div >
+    </Provider>
   )
 }
 
@@ -55,6 +56,23 @@ const AppRouter = createBrowserRouter([{
  *    1.2 Body
  *        1.2.1 RestaurantCard
  *    1.3 Footer
+ * 
+ * 
+ * REDUX IMPLEMENTATION:
+ * 
+ * npm i
+ * @reduxjs/toolkit job => core => managing redux core and it's slices and everything core to redux
+ * 
+ *  - configureStore({}) : generally store `provide` to the whole application(App.js) user Provider component( use react-redux)
+ * 
+ * 
+ * react-redux => bridge between react and redux
+ * 
+ *  - Provider : component type: wrap it || <Provider />
+ * 
+ * 
+ * store.js => create own redux store [configureStore(())]
+ * 
  * **/
 
 const root = ReactDom.createRoot(document.getElementById("root"))
