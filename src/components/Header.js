@@ -1,10 +1,16 @@
 import { useContext, useState } from "react"
 import SearchContext from "../Contexts/SearchContext"
+import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [searchKey, setSearchKey] = useState("")
 
   const { setSearch } = useContext(SearchContext)
+
+  // react-redux: provide this selector to give access to the store directly
+  // actually the store slice: eg: store.cart.items
+  const cartItem = useSelector(store => store.cart.items)
 
   function searchAction() {
     setSearch(searchKey)
@@ -34,10 +40,18 @@ const Header = () => {
             onClick={() => { searchAction() }}>Search</div>
         </div>
         <ul className="side-menu flex items-center">
-          <li className="pl-2 m-2">Offers</li>
-          <li className="pl-2 m-2">Help</li>
-          <li className="pl-2 m-2">Sankar P...</li>
-          <li className="pl-2 m-2">Cart</li>
+          <Link>
+            <li className="pl-2 m-2">Offers</li>
+          </Link>
+          <Link>
+            <li className="pl-2 m-2">Help</li>
+          </Link>
+          <Link>
+            <li className="pl-2 m-2">Sankar P...</li>
+          </Link>
+          <Link>
+            <li className="pl-2 m-2">Cart - {cartItem.length}</li>
+          </Link>
         </ul>
       </div>
     </div>
