@@ -69,8 +69,8 @@ const AppRouter = createBrowserRouter([{
  *  - make redux store slice eg: cartSlice
  *      - name: "cart"
  *      - initialState: {}
- *      - reducer: {                              // this will have an mapping with action, what action will call what reducer function
- *                    addItem: () => {}           // here the key `addItem` is the action && value `()=>{}`, a reducer function
+ *      - reducer: {                                           // this will have an mapping with action, what action will call what reducer function
+ *                    addItem: (state, action) => {}           // here the key `addItem` is the action && value `()=>{}`, a reducer function, state is the initial state
  *                    
  *                 }
  * 
