@@ -32,7 +32,7 @@ const MenuItem = (item) => {
     itemTWClass += " bg-red"
     itemTWClass += " border-indigo-400"
   } else {
-    itemTWClass += " border-indigo-200"
+    itemTWClass += " border-indigo-100 hover:border-indigo-400"
     itemTWClass += " bg-while"
   }
 
@@ -41,14 +41,18 @@ const MenuItem = (item) => {
       onClick={() => (handleAddItem(item))}
       className={itemTWClass}>
       <span>{name}</span>
-      <div
-        className="
-        pt-1 pb-1 pl-3 pr-3  text-indigo-50
-        rounded-lg border-solid border-2 border-indigo-100 group-hover:bg-indigo-400
+      <div className="
+      flex
+      border-1
+      border-solid
+      border-indigo-100 hover:border-indigo-400
+      text-indigo-100 hover:text-indigo-400
       ">
-        Add
+        <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">+</div>
+        <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">Add</div>
+        <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">-</div>
       </div>
-    </div>
+    </div >
   )
 }
 

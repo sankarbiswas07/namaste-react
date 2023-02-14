@@ -23,21 +23,19 @@ const RestaurantDetails = () => {
 
   return (
     <div className='m-10'>
-      <div className="">
-        <div className="
+      <div className="
           row-span-2 col-span-2
         bg-slate-50 pt-5 
           pb-5 pl-8 pr-8
           rounded-lg border-solid border-2
         border-indigo-50
         ">
-          <div className="pt-5 pb-5 text-indigo-400">
-            <h1 className="text-xl font-bold">
-              Today's Menu
-            </h1>
-          </div>
-          {menuArr.map((item, i) => <MenuItem key={i} {...item} />)}
+        <div className="pt-5 pb-5 text-indigo-400">
+          <h1 className="text-xl font-bold">
+            Today's Menu
+          </h1>
         </div>
+        {menuArr.map((item, i) => <MenuItem key={i} {...item} />)}
       </div>
     </div >
   )
