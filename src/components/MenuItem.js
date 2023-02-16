@@ -8,7 +8,7 @@ const MenuItem = (item) => {
   // actually the store slice: eg: store.cart.items
   // const cartItem = useSelector(store => store.cart.items)
 
-  const [isInCart, setInCart] = useState("");
+  const [orderCount, setOrderCount] = useState(0);
 
 
   // this will trigger the update cycle of react store slice
@@ -17,12 +17,15 @@ const MenuItem = (item) => {
   const handleAddItem = (data) => {
     const { id, name, price } = data
     dispatch(addItem({ id, name, price }))
-    setInCart(true)
+    setOrderCount(orderCount + 1)
   }
+
   const handleRemoveItem = (data) => {
-    const { id, name, price } = data
-    dispatch(removeItem({ id, name, price }))
-    setInCart(true)
+    if (orderCount) {
+      const { id, name, price } = data
+      dispatch(removeItem({ id, name, price }))
+      setOrderCount(orderCount - 1)
+    }
   }
 
   let itemTWClass = `flex
@@ -30,10 +33,9 @@ const MenuItem = (item) => {
       items-center
       pl-3 pr-3 pt-1 pb-1 mb-2 mt-2
       rounded-lg border-solid border-2
-      group
-      cursor-pointer`
+      group`
 
-  if (isInCart) {
+  if (orderCount) {
     itemTWClass += " bg-red"
     itemTWClass += " border-indigo-400"
   } else {
@@ -48,28 +50,58 @@ const MenuItem = (item) => {
         <span>{name}</span>
       </div>
       <div className="flex mr-3 mt-1 mb-1 ">
-        <div className="flex justify-between mr-6 w-[140] border border-1
-         border-red-300 rounded-lg pl-2 pr-2 pt-1 pb-1">
-          <span>Price</span>
+        <div className="flex justify-between mr-6 w-[160] pl-2 pr-2 pt-1 pb-1">
+          <span className="text-sm text-red-200">Price per plate</span>
           <span className="mr-2">{Math.floor(price / 100)}</span>
         </div>
         <div className="
       flex
+      border
       border-1
       border-solid
-      border-indigo-100 hover:border-indigo-400
-      text-indigo-400 
+      rounded-lg
+      border-indigo-100 group-hover:border-indigo-400
+      text-indigo-400
+      w-[120]
+      justify-center
       ">
+          {
+            orderCount
+              ? (
+                <>
+                  <div
+                    className="pt-1 pb-1 pl-3 pr-3 border-solid border-1 
+                    cursor-pointer"
+                    onClick={() => (handleAddItem(item))}
+                  >
+                    +
+                  </div>
 
-          {/* handle + and - symbol only when same item has added  */}
-          <div
-            className="pt-1 pb-1 pl-3 pr-3 border-solid border-1"
-            onClick={() => (handleAddItem(item))}
-          >+</div>
-          <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">Add</div>
-          <div
-            onClick={() => (handleRemoveItem(item))}
-            className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">-</div>
+                  <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">
+                    {orderCount}
+                  </div>
+
+                  <div
+                    className="pt-1 pb-1 pl-3 pr-3 border-solid border-1 
+                    cursor-pointer"
+                    onClick={() => (handleRemoveItem(item))}
+                  >
+                    -
+                  </div>
+                </>
+              )
+
+              : (
+                <>
+                  <div
+                    onClick={() => (handleAddItem(item))}
+                    className="pt-1 pb-1 pl-3 pr-3 border-solid border-1 
+                    cursor-pointer">
+                    A D D
+                  </div>
+                </>
+              )
+          }
         </div>
       </div>
     </div >

@@ -22,7 +22,8 @@ const RestaurantDetails = () => {
   console.log(menuArr);
 
   return (
-    <div className='m-10'>
+    <div className='m-10 flex justify-evenly'>
+      <div>Menu section</div>
       <div className="
           row-span-2 col-span-2
         bg-slate-50 pt-5 
@@ -37,6 +38,7 @@ const RestaurantDetails = () => {
         </div>
         {menuArr.map((item, i) => <MenuItem key={i} {...item} />)}
       </div>
+      <div>Cart section</div>
     </div >
   )
 }
