@@ -11,6 +11,10 @@ const Header = () => {
   // react-redux: provide this selector  (subscriber)to give access to the store directly
   // actually the store slice: eg: store.cart.items
   const cartItem = useSelector(store => store.cart.items)
+  console.log(cartItem)
+
+  let cartCount = 0
+  Object.values(cartItem).forEach(item => { cartCount += item.orderCount })
 
   function searchAction() {
     setSearch(searchKey)
@@ -50,7 +54,7 @@ const Header = () => {
             <li className="pl-2 m-2">Sankar P...</li>
           </Link>
           <Link>
-            <li className="pl-2 m-2">Cart - {cartItem.length}</li>
+            <li className="pl-2 m-2">Cart - {cartCount}</li>
           </Link>
         </ul>
       </div>

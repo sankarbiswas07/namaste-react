@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { addItem } from "../utils/store/cartSlice"
+import { addItem, removeItem } from "../utils/store/cartSlice"
 
 const MenuItem = (item) => {
   const { id, name, price } = item
@@ -19,11 +19,16 @@ const MenuItem = (item) => {
     dispatch(addItem({ id, name, price }))
     setInCart(true)
   }
+  const handleRemoveItem = (data) => {
+    const { id, name, price } = data
+    dispatch(removeItem({ id, name, price }))
+    setInCart(true)
+  }
 
   let itemTWClass = `flex
-      items-center
       justify-between
-      p-3 mb-2 mt-2
+      items-center
+      pl-3 pr-3 pt-1 pb-1 mb-2 mt-2
       rounded-lg border-solid border-2
       group
       cursor-pointer`
@@ -38,19 +43,34 @@ const MenuItem = (item) => {
 
   return (
     <div
-      onClick={() => (handleAddItem(item))}
       className={itemTWClass}>
-      <span>{name}</span>
-      <div className="
+      <div className="flex items-center">
+        <span>{name}</span>
+      </div>
+      <div className="flex mr-3 mt-1 mb-1 ">
+        <div className="flex justify-between mr-6 w-[140] border border-1
+         border-red-300 rounded-lg pl-2 pr-2 pt-1 pb-1">
+          <span>Price</span>
+          <span className="mr-2">{Math.floor(price / 100)}</span>
+        </div>
+        <div className="
       flex
       border-1
       border-solid
       border-indigo-100 hover:border-indigo-400
-      text-indigo-100 hover:text-indigo-400
+      text-indigo-400 
       ">
-        <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">+</div>
-        <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">Add</div>
-        <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">-</div>
+
+          {/* handle + and - symbol only when same item has added  */}
+          <div
+            className="pt-1 pb-1 pl-3 pr-3 border-solid border-1"
+            onClick={() => (handleAddItem(item))}
+          >+</div>
+          <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">Add</div>
+          <div
+            onClick={() => (handleRemoveItem(item))}
+            className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">-</div>
+        </div>
       </div>
     </div >
   )
