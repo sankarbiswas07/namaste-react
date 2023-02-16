@@ -25,27 +25,30 @@ const RestaurantDetails = () => {
   console.log(widgets);
 
   return (
-    <div className='m-10 flex justify-evenly'>
-      <div>
-        {widgets.map((value, i) => <Menu {...value} key={i} />)}
+    <>
+      {/* Restaurant details with offer */}
+      <div className="h-[200] bg-slate-900">
 
       </div>
-      <div className="
-          row-span-2 col-span-2
-        bg-slate-50 pt-5 
-          pb-5 pl-8 pr-8
-          rounded-lg border-solid border-2
-        border-indigo-50
+      {/* menu section */}
+      <div className='mx-auto w-[1024]'>
+        <div className='flex'>
+          <div className="min-w-[300] pt-10">
+            {widgets.map((value, i) => <Menu {...value} key={i} />)}
+          </div>
+          <div className="
+          row-span-2 
+          col-span-2
+          pt-10 pb-5 pl-8 pr-8
+          border-l-[1px]
+          border-black
         ">
-        <div className="pt-5 pb-5 text-indigo-400">
-          <h1 className="text-xl font-bold">
-            Today's Menu
-          </h1>
-        </div>
-        {menuArr.map((item, i) => <MenuItem key={i} {...item} />)}
+            {menuArr.map((item, i) => <MenuItem key={i} {...item} />)}
+          </div>
+          <div>Cart section</div>
+        </div >
       </div>
-      <div>Cart section</div>
-    </div >
+    </>
   )
 }
 

@@ -32,7 +32,7 @@ const MenuItem = (item) => {
       justify-between
       items-center
       pl-3 pr-3 pt-1 pb-1 mb-2 mt-2
-      rounded-lg border-solid border-2
+       border-solid border-1
       group`
 
   if (orderCount) {
@@ -59,7 +59,6 @@ const MenuItem = (item) => {
       border
       border-1
       border-solid
-      rounded-lg
       border-indigo-100 group-hover:border-indigo-400
       text-indigo-400
       w-[120]
