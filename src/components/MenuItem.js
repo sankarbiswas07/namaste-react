@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
+
+import { IMG_CDN_URL } from "../constants"
 import { addItem, removeItem } from "../utils/store/cartSlice"
 
 const MenuItem = (item) => {
-  const { id, name, price } = item
+  const { id, name, price, description, cloudinaryImageId } = item
   // react-redux: provide this selector  (subscriber)to give access to the store directly
   // actually the store slice: eg: store.cart.items
   // const cartItem = useSelector(store => store.cart.items)
@@ -31,8 +33,9 @@ const MenuItem = (item) => {
   let itemTWClass = `flex
       justify-between
       items-center
-      pl-3 pr-3 pt-1 pb-1 mb-2 mt-2
-       border-solid border-1
+      pr-3 pt-3 pb-3 
+      mb-4 mt-4
+      border-b-[1px]
       group`
 
   if (orderCount) {
@@ -46,24 +49,26 @@ const MenuItem = (item) => {
   return (
     <div
       className={itemTWClass}>
-      <div className="flex items-center">
-        <span>{name}</span>
+      <div className="items-bottom">
+        <p>{name}</p>
+        <p className="text-sm my-2 text-gray-700">₹ {price}</p>
+        <p className="text-xs text-gray-400 font-light">{description}</p>
       </div>
-      <div className="flex mr-3 mt-1 mb-1 ">
-        <div className="flex justify-between mr-6 w-[160] pl-2 pr-2 pt-1 pb-1">
-          <span className="text-sm text-red-200">Price per plate</span>
-          <span className="mr-2">{Math.floor(price / 100)}</span>
+      <div className="flex-start">
+        <div>
+          <img className="w-[150] rounded-lg" src={IMG_CDN_URL + cloudinaryImageId} />
         </div>
         <div className="
-      flex
-      border
-      border-1
-      border-solid
-      border-indigo-100 group-hover:border-indigo-400
-      text-indigo-400
-      w-[120]
-      justify-center
-      ">
+               mx-auto
+                flex
+                border
+                border-1
+                border-solid
+                border-indigo-100 group-hover:border-indigo-400
+                text-indigo-400
+                w-[120]
+                justify-center
+              ">
           {
             orderCount
               ? (

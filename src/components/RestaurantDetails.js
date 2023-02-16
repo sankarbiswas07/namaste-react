@@ -1,6 +1,6 @@
 import useRestaurant from '../hooks/useRestaurant';
-import MenuItem from './MenuItem';
 import Menu from './Menu';
+import MenuGroup from './MenuGroup';
 
 const RestaurantDetails = () => {
 
@@ -20,12 +20,27 @@ const RestaurantDetails = () => {
   // re-render when state:restaurant dat changed by API call, it's trigger an re-render
   // initial render > Api call > re-render, restaurant has data now
   // re-conciliation happen shimmer changed to the next `return (DOM)`
-  const { menu: { items: menuItems, widgets }, name } = restaurant
-  const menuArr = Object.values(menuItems)
-  console.log(widgets);
+  const { menu: { items: menuItems, widgets }, ...meta } = restaurant
+
+  // group as per category
+  const menuArrGrp = {}
+  // const menuArr = Object.values(menuItems)
+
+  Object.values(menuItems).forEach(item => {
+    if (menuArrGrp[item.category]) {
+      // 2nd time user is adding
+      menuArrGrp[item.category].push(item)
+    } else {
+      // 1st time adding the item in the menu
+      menuArrGrp[item.category] = [item]
+    }
+  })
+  // console.log(menuArrGrp);
+  const menus = Object.keys(menuArrGrp)
+  console.log(menus.length);
 
   return (
-    <>
+    <div className=''>
       {/* Restaurant details with offer */}
       <div className="h-[200] bg-slate-900">
 
@@ -43,12 +58,21 @@ const RestaurantDetails = () => {
           border-l-[1px]
           border-black
         ">
-            {menuArr.map((item, i) => <MenuItem key={i} {...item} />)}
+            {
+              Object.keys(menuArrGrp).map((menuArr, i) => {
+                return (
+                  <MenuGroup id={i} key={i} {...{
+                    meta,
+                    menu: menuArrGrp[menuArr]
+                  }} />
+                )
+              })
+            }
           </div>
           <div>Cart section</div>
         </div >
       </div>
-    </>
+    </div>
   )
 }
 
