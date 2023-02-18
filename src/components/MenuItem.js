@@ -1,34 +1,9 @@
-import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
-
 import { IMG_CDN_URL } from "../constants"
-import { addItem, removeItem } from "../utils/store/cartSlice"
+import AddToCartButton from "./AddToCartButton"
+
 // style sample - https://play.tailwindcss.com/xlvMilkM5b
 const MenuItem = (item) => {
   const { id, name, price, description, cloudinaryImageId } = item
-  // react-redux: provide this selector  (subscriber)to give access to the store directly
-  // actually the store slice: eg: store.cart.items
-  // const cartItem = useSelector(store => store.cart.items)
-
-  const [orderCount, setOrderCount] = useState(0);
-
-
-  // this will trigger the update cycle of react store slice
-  // Update cycle : When you click a button, it will `dispatch` an `action` which has a `reducer` function which will "update" a `slice` of a `redux store`
-  const dispatch = useDispatch()
-  const handleAddItem = (data) => {
-    const { id, name, price } = data
-    dispatch(addItem({ id, name, price }))
-    setOrderCount(orderCount + 1)
-  }
-
-  const handleRemoveItem = (data) => {
-    if (orderCount) {
-      const { id, name, price } = data
-      dispatch(removeItem({ id, name, price }))
-      setOrderCount(orderCount - 1)
-    }
-  }
 
   let itemTWClass = `flex
       justify-between
@@ -37,14 +12,6 @@ const MenuItem = (item) => {
       mb-4 mt-4
       border-b-[1px]
       group`
-
-  if (orderCount) {
-    itemTWClass += " bg-red"
-    itemTWClass += " border-indigo-400"
-  } else {
-    itemTWClass += " border-gray-800"
-    itemTWClass += " bg-while"
-  }
 
   return (
     <div
@@ -73,43 +40,7 @@ const MenuItem = (item) => {
                 w-[120px]
                 justify-center
               ">
-          {
-            orderCount
-              ? (
-                <>
-                  <div
-                    className="pt-1 pb-1 pl-3 pr-3 border-solid border-1 
-                    cursor-pointer"
-                    onClick={() => (handleAddItem(item))}
-                  >
-                    +
-                  </div>
-
-                  <div className="pt-1 pb-1 pl-3 pr-3 border-solid border-1">
-                    {orderCount}
-                  </div>
-
-                  <div
-                    className="pt-1 pb-1 pl-3 pr-3 border-solid border-1 
-                    cursor-pointer"
-                    onClick={() => (handleRemoveItem(item))}
-                  >
-                    -
-                  </div>
-                </>
-              )
-
-              : (
-                <>
-                  <div
-                    onClick={() => (handleAddItem(item))}
-                    className="pt-1 pb-1 pl-3 pr-3 border-solid border-1 
-                    cursor-pointer">
-                    A D D
-                  </div>
-                </>
-              )
-          }
+          <AddToCartButton {...item} key={id} />
         </div>
       </div>
     </div >

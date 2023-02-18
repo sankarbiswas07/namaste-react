@@ -25,7 +25,7 @@ const Body = () => {
   }
 
   return (
-    <div className="flex flex-wrap md:container md:mx-auto">
+    <div className="flex flex-wrap container mx-auto">
       {
         allRestaurants.map(restaurant => {
           return (<RestaurantCard {...restaurant.data} key={restaurant.data.id} />)

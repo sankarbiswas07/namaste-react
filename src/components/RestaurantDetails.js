@@ -1,4 +1,5 @@
 import useRestaurant from '../hooks/useRestaurant';
+import Cart from './cart';
 import Menu from './Menu';
 import MenuGroup from './MenuGroup';
 
@@ -69,7 +70,9 @@ const RestaurantDetails = () => {
               })
             }
           </div>
-          <div>Cart section</div>
+          <div>
+            <Cart {...meta} />
+          </div>
         </div >
       </div>
     </div>
