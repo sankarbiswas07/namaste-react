@@ -5,6 +5,11 @@ module.exports = {
     // fontFamily: {
     //   display: ["Cutive Mono", "monospace"],
     // },
+    extend: {
+      colors: {
+        "black-0": "#393053",
+      }
+    }
   },
   plugins: [],
 }

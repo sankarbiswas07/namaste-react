@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 
 import { IMG_CDN_URL } from "../constants"
 import { addItem, removeItem } from "../utils/store/cartSlice"
-
+// style sample - https://play.tailwindcss.com/xlvMilkM5b
 const MenuItem = (item) => {
   const { id, name, price, description, cloudinaryImageId } = item
   // react-redux: provide this selector  (subscriber)to give access to the store directly
@@ -42,7 +42,7 @@ const MenuItem = (item) => {
     itemTWClass += " bg-red"
     itemTWClass += " border-indigo-400"
   } else {
-    itemTWClass += " border-indigo-100 hover:border-indigo-400"
+    itemTWClass += " border-gray-800"
     itemTWClass += " bg-while"
   }
 
@@ -59,14 +59,18 @@ const MenuItem = (item) => {
           <img className="w-[150] rounded-lg" src={IMG_CDN_URL + cloudinaryImageId} />
         </div>
         <div className="
+              z-50
+              drop-shadow-lg
                mx-auto
                 flex
                 border
                 border-1
                 border-solid
-                border-indigo-100 group-hover:border-indigo-400
-                text-indigo-400
-                w-[120]
+                border-rose-400 group-hover:border-rose-800
+                text-rose-100 group-hover:text-white
+                group-hover:bg-rose-600
+                bg-rose-500
+                w-[120px]
                 justify-center
               ">
           {
