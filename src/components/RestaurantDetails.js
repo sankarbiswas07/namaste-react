@@ -20,7 +20,7 @@ const RestaurantDetails = () => {
 
   // re-render when state:restaurant dat changed by API call, it's trigger an re-render
   // initial render > Api call > re-render, restaurant has data now
-  // re-conciliation happen shimmer changed to the next `return (DOM)`
+  // re-conciliation happen, shimmer changed to the next `return (DOM)`
   const { menu: { items: menuItems, widgets }, ...meta } = restaurant
 
   // group as per category

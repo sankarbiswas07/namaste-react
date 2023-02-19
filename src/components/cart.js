@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { useEffect } from "react"
 import AddToCartButton from "./AddToCartButton"
 const Cart = ({
   name
@@ -6,7 +7,7 @@ const Cart = ({
 
   //fetch react store slice
   const cartItems = useSelector(store => store.cart.items)
-  console.log(Object.values(cartItems))
+  console.log("cart js => ", Object.values(cartItems))
 
   return (
     <div className="min-w-[250] pt-10">
@@ -23,9 +24,11 @@ const Cart = ({
       {/* Cart item section  */}
       {
         Object.values(cartItems)?.map((item, i) => (
-          <div className="flex mb-2">
+          <div className="flex mb-2 justify-between" key={i}>
             <span className="text-xs">{item.name}</span>
-            <AddToCartButton {...item} key={i} />
+            <span className="text-xs">x {item.orderCount}</span>
+            <span className="text-xs">{item.price / 100}</span>
+            <AddToCartButton {...item} />
           </div>
         ))
       }
