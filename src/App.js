@@ -11,6 +11,7 @@ import RestaurantDetails from './components/RestaurantDetails';
 import SearchContext from './Contexts/SearchContext';
 import { Provider } from "react-redux";
 import store from './utils/store';
+import Cart from './components/Cart';
 
 
 const AppLayout = () => {
@@ -48,6 +49,9 @@ const AppRouter = createBrowserRouter([{
   }, {
     path: "/restaurant/:id",
     element: <RestaurantDetails />
+  }, {
+    path: "/cart",
+    element: <Cart />
   }]
 }])
 

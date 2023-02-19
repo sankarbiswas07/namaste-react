@@ -44,17 +44,20 @@ const RestaurantDetails = () => {
     <div className=''>
       {/* Restaurant details with offer */}
       <div className="h-[200] bg-slate-900">
-
+        <span className='text-2xl align-middle text-center font-color-gray-200'>SOME BANNER</span>
       </div>
       {/* menu section */}
-      <div className='mx-auto w-[1024]'>
-        <div className='flex'>
-          <div className="min-w-[300] pt-10">
+      <div className='mx-auto container'>
+        {/* <div className='flex'> */}
+        <div className='grid grid-cols-4 gap-0'>
+          {/* side menu list section */}
+          <div className="pt-10 col-span-1">
             {widgets.map((value, i) => <Menu {...value} key={i} />)}
           </div>
+          {/* main menu group */}
           <div className="
-          row-span-2 
           col-span-2
+          row-span-2
           pt-10 pb-5 pl-8 pr-8
           border-l-[1px]
           border-black
@@ -70,7 +73,8 @@ const RestaurantDetails = () => {
               })
             }
           </div>
-          <div>
+          {/* cart section */}
+          <div className='col-span-1'>
             <Cart {...meta} />
           </div>
         </div >

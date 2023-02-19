@@ -5,7 +5,7 @@ const MenuGroup = ({ menu, meta }) => {
   // console.log(menu)
   // final render
   return (
-    <div>
+    <div className="">
       <span className="decoration-4 font-extrabold">{(menu[0].category).toUpperCase()}</span>
       <div
         className="

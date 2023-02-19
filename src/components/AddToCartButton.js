@@ -39,21 +39,22 @@ const AddToCartButton = (item) => {
   }
 
   return (
-    <div className="
-              z-50
-              drop-shadow-lg
-               mx-auto
-                flex
-                border
-                border-1
-                border-solid
-                border-rose-400 group-hover:border-rose-800
-                text-rose-100 group-hover:text-white
-                group-hover:bg-rose-600
-                bg-rose-500
-                w-[120px]
-                justify-center
-              ">
+    <div className="z-1
+      drop-shadow-lg
+      mx-auto
+      flex
+      items-center
+      border
+      border-1
+      border-solid
+      border-rose-400 group-hover:border-rose-800
+      text-rose-100 group-hover:text-white
+      group-hover:bg-rose-600
+      bg-rose-500
+      w-[120px]
+      h-[40px]
+      justify-center"
+    >
 
       {
         orderCount

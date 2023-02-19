@@ -22,16 +22,30 @@ const Header = () => {
   }
 
   return (
-    <div className=" bg-rose-600 p-3 flex justify-center items-center sticky top-0 z-999">
-      <div className="md:container md:mx-auto px-4 flex justify-between m-auto">
-        <div className="brand flex items-center">
-          <h3> FoodVilla</h3>
-        </div>
+    <div className=" bg-rose-600 p-3 flex justify-center sticky top-0 z-10">
+      <div className="md:container md:mx-auto px-4 flex justify-between m-auto items-center">
+        <Link to="/">
+          <div className="text-center mr-4">
+            <h3> FoodVilla</h3>
+          </div>
+        </Link>
         {/* search section */}
-        <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center">
           <label className="relative block items-center">
             {/* <span className="sr-only">Search</span> */}
-            <input className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            <input className="placeholder:italic
+             placeholder:text-slate-400
+              block
+              bg-white
+              w-full border
+              border-slate-300
+              py-2 pl-9 pr-3 
+              shadow-sm 
+              focus:outline-none
+              focus:border-sky-500
+              focus:ring-sky-500 
+              text-center
+              focus:ring-1 sm:text-sm"
               placeholder="Search for anything..."
               type="text"
               onChange={(e) => { setSearchKey(e.target.value?.trim()) }}
@@ -40,8 +54,16 @@ const Header = () => {
           </label>
 
           <div
-            className="ml-2 h-9 pl-3 pr-3 items-center bg-yellow-400 cursor-pointer"
-            onClick={() => { searchAction() }}>Search</div>
+            className="ml-2
+            w-[120px]
+            py-[6px]
+            text-center
+            bg-yellow-400 
+            cursor-pointer"
+            onClick={() => { searchAction() }}
+          >
+            <span>Search</span>
+          </div>
         </div>
         <ul className="side-menu flex items-center">
           <Link>
@@ -53,7 +75,7 @@ const Header = () => {
           <Link>
             <li className="pl-2 m-2">Sankar P...</li>
           </Link>
-          <Link>
+          <Link to={"/cart"}>
             <li className="pl-2 m-2">Cart - {cartCount}</li>
           </Link>
         </ul>
