@@ -1,5 +1,5 @@
 import useRestaurant from '../hooks/useRestaurant';
-import Cart from './cart';
+import Cart from './Cart';
 import Menu from './Menu';
 import MenuGroup from './MenuGroup';
 
