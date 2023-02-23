@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react"
+import { useRef, useContext, useEffect } from "react"
 import useOnScreen from "../hooks/useOnScreen"
 import MenuItem from "./MenuItem"
 import RestaurantContext from '../Contexts/RestaurantContext';
@@ -10,10 +10,13 @@ const MenuGroup = ({ menu, meta }) => {
 
   const { setMenuSelected } = useContext(RestaurantContext)
 
-  if (isVisible) {
-    setMenuSelected(menu[0].category)
-    console.log(`${(menu[0].category).toUpperCase()} - is visible now`)
-  }
+  useEffect(() => {
+    if (isVisible) {
+      setMenuSelected(menu[0].category)
+      console.log(`${(menu[0].category).toUpperCase()} - is visible now`)
+    }
+  }, [isVisible])
+
 
   if (!isVisible) console.log(`${(menu[0].category).toUpperCase()} - is not visible now`)
   // final render
