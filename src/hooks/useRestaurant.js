@@ -15,7 +15,7 @@ const useRestaurant = () => {
     const json = await data.json()
     // Optional Chaining
     const restaurantData = json?.data
-    console.log("called useRestaurant !!!")
+    // console.log("called useRestaurant !!!")
     setRestaurant(restaurantData);
   }
   return restaurant

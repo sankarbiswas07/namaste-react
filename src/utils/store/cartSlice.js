@@ -21,7 +21,7 @@ const cartSlice = createSlice({
         state.items[action?.payload?.id] = { ...action?.payload }
         state.items[action?.payload?.id].orderCount = 1
       }
-      console.log("add Item called");
+      // console.log("add Item called");
       // NOTE:
       // this function is not returning anything
       // this takes 'state' and directly modify that
@@ -30,7 +30,7 @@ const cartSlice = createSlice({
       state = {} // Direct modify the state to empty
     },
     removeItem: (state, action) => {
-      console.log("remove Item called");
+      // console.log("remove Item called");
       const itemToBeRemoved = state.items[action?.payload?.id]
       if (itemToBeRemoved?.orderCount) {
         let { orderCount } = state.items[action?.payload?.id]

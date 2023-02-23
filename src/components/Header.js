@@ -18,7 +18,7 @@ const Header = () => {
 
   function searchAction() {
     setSearch(searchKey)
-    console.log("searchAction fired !!")
+    // console.log("searchAction fired !!")
   }
 
   return (

@@ -14,9 +14,9 @@ const Body = () => {
     allRestaurants = filterData(search, allRestaurants)
   }
 
-  console.log("body", allRestaurants?.length, search)
+  // console.log("body", allRestaurants?.length, search)
   if (!allRestaurants?.length) {
-    console.log("Calling useRestaurants")
+    // console.log("Calling useRestaurants")
     return (
       <div className="flex flex-wrap relative">
         {Array(30).fill("").map((e, i) => (<RestaurantCardSkeleton key={i} />))}

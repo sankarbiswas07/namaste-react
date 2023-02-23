@@ -8,8 +8,8 @@ const AddToCartButton = (item) => {
   const cartItems = useSelector(store => store.cart.items)
   // console.log(cartItems)
   const [orderCount, setOrderCount] = useState(0);
-  console.log("Component : AddToCartButton as useState `Initial render` the component for `orderCount` value change")
-  console.log(`WATCHOUT!!! useState 'orderCount' is 0 by default for ${item?.id} <=> ${item.name}\n\n`)
+  // console.log("Component : AddToCartButton as useState `Initial render` the component for `orderCount` value change")
+  // console.log(`WATCHOUT!!! useState 'orderCount' is 0 by default for ${item?.id} <=> ${item.name}\n\n`)
 
   // after a tight 20 hr. time lose. 
   // I remember and try setOrderCount(cartItems[item?.id]?.orderCount) in useEffect()
@@ -20,8 +20,8 @@ const AddToCartButton = (item) => {
   // need to setOrderCount on every re-render
 
   useEffect(() => {
-    console.log("re-render of add to cart button")
-    console.log(cartItems[item?.id]?.orderCount)
+    // console.log("re-render of add to cart button")
+    // console.log(cartItems[item?.id]?.orderCount)
     setOrderCount(cartItems[item?.id]?.orderCount)
   })
   // this will trigger the update cycle of react store slice

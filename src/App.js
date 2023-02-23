@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom/client";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Provider } from "react-redux";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,11 +9,10 @@ import Footer from "./components/Footer";
 import About from './components/About';
 import Contact from "./components/Contact";
 import RestaurantDetails from './components/RestaurantDetails';
-import SearchContext from './Contexts/SearchContext';
-import { Provider } from "react-redux";
 import store from './utils/store';
 import Cart from './components/Cart';
 
+import SearchContext from './Contexts/SearchContext';
 
 const AppLayout = () => {
 

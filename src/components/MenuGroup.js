@@ -1,12 +1,20 @@
-import { useRef } from "react"
+import { useRef, useContext } from "react"
 import useOnScreen from "../hooks/useOnScreen"
 import MenuItem from "./MenuItem"
+import RestaurantContext from '../Contexts/RestaurantContext';
 
 const MenuGroup = ({ menu, meta }) => {
   // console.log(menu)
   const ref = useRef(null)
   const isVisible = useOnScreen(ref)
-  if (isVisible) console.log(`${(menu[0].category).toUpperCase()} - is visible now`)
+
+  const { setMenuSelected } = useContext(RestaurantContext)
+
+  if (isVisible) {
+    setMenuSelected(menu[0].category)
+    console.log(`${(menu[0].category).toUpperCase()} - is visible now`)
+  }
+
   if (!isVisible) console.log(`${(menu[0].category).toUpperCase()} - is not visible now`)
   // final render
   return (

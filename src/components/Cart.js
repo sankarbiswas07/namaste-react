@@ -6,7 +6,7 @@ const Cart = ({
 
   //fetch react store slice
   const cartItems = useSelector(store => store.cart.items)
-  console.log("cart js => ", Object.values(cartItems))
+  // console.log("cart js => ", Object.values(cartItems))
 
   return (
     <div className="min-w-[340px] max-w-[340px] pt-10 mx-auto p-[10px]">
