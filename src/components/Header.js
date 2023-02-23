@@ -22,7 +22,7 @@ const Header = () => {
   }
 
   return (
-    <div className=" bg-rose-600 p-3 flex justify-center sticky top-0 z-10">
+    <div className=" bg-rose-600 p-3 flex justify-center z-50">
       <div className="md:container md:mx-auto px-4 flex justify-between m-auto items-center">
         <Link to="/">
           <div className="text-center mr-4">

@@ -18,7 +18,7 @@ const Body = () => {
   if (!allRestaurants?.length) {
     console.log("Calling useRestaurants")
     return (
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap relative">
         {Array(30).fill("").map((e, i) => (<RestaurantCardSkeleton key={i} />))}
       </div>
     )

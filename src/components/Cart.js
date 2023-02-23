@@ -9,7 +9,7 @@ const Cart = ({
   console.log("cart js => ", Object.values(cartItems))
 
   return (
-    <div className="min-w-[440px] max-w-[440px] pt-10 mx-auto p-[10px] ">
+    <div className="min-w-[340px] max-w-[340px] pt-10 mx-auto p-[10px]">
       <div className="border-b-[1px] border-gray-300">
         <p className="text-2xl mb-3">Cart</p>
         <p className="text-sm font-light my-5">from <span className="text-rose-600 font-normal">{name}</span></p>

@@ -21,25 +21,11 @@ const MenuItem = (item) => {
         <p className="text-sm my-2 text-gray-700">₹ {price / 100}</p>
         <p className="text-xs text-gray-400 font-light">{description}</p>
       </div>
-      <div className="flex-start">
-        <div>
-          <img className="w-[150] rounded-lg" src={IMG_CDN_URL + cloudinaryImageId} />
+      <div className="flex-start relative">
+        <div className="w-[150] min-h-[90px] bg-gray-100">
+          <img src={IMG_CDN_URL + cloudinaryImageId} />
         </div>
-        <div className="
-          z-50
-          drop-shadow-lg
-          mx-auto
-          flex
-          border
-          border-1
-          border-solid
-          border-rose-400 group-hover:border-rose-800
-          text-rose-100 group-hover:text-white
-          group-hover:bg-rose-600
-          bg-rose-500
-          w-[120px]
-          justify-center"
-        >
+        <div className="absolute -bottom-2 left-4 z-10">
           <AddToCartButton {...item} />
         </div>
       </div>
