@@ -31,21 +31,33 @@ const RestaurantDetails = () => {
   const { menu: { items: menuItems, widgets }, ...meta } = restaurant
 
   // group as per category
-  const menuArrGrp = {}
+  /**
+   * - data: {} : will hold the actual grouping, so i can fetch at once.
+   * - sequence: [] : As object does not maintain sequence.
+   *                : Simple Object.keys(menuArrGrp.data).map() won't maintain the sequenceD
+   *                : this will help to enable the scroll feature
+   * 
+   *            
+   */
+
+  const menuArrGrp = { data: {}, sequence: [] }
   // const menuArr = Object.values(menuItems)
+  widgets.map((value, i) => menuArrGrp.sequence.push(value.name))
 
   Object.values(menuItems).forEach(item => {
-    if (menuArrGrp[item.category]) {
+    if (menuArrGrp.data[item.category]) {
       // 2nd time user is adding
-      menuArrGrp[item.category].push(item)
+      menuArrGrp.data[item.category].push(item)
     } else {
       // 1st time adding the item in the menu
-      menuArrGrp[item.category] = [item]
+      menuArrGrp.data[item.category] = [item]
     }
   })
-  // console.log(menuArrGrp);
-  const menus = Object.keys(menuArrGrp)
-  // console.log(menus.length);
+
+  // console.log(Object.values(menuItems).pop())
+  // console.log(Object.keys(menuArrGrp.data))
+  // console.log(menuArrGrp.data)
+
 
   return (
 
@@ -61,22 +73,25 @@ const RestaurantDetails = () => {
           <div className='grid grid-cols-6 gap-0'>
             {/* side menu list section */}
             <div className="pt-10 col-span-1 sticky top-[200px]">
+              {/* widgets are the actual sequence which swiggy shows */}
               {widgets.map((value, i) => <Menu {...value} key={i} />)}
             </div>
             {/* main menu group */}
-            <div className="
-          col-span-4
-          row-span-2
-          pt-10 pb-5 pl-8 pr-8
-          border-l-[1px]
-          border-black
-        ">
+            <div className="col-span-4
+              row-span-2
+              pt-10 pb-5 pl-8 pr-8
+              border-l-[1px]
+            border-black"
+            >
+
+              {/*have to re arrange the list according to the menu - widget*/}
               {
-                Object.keys(menuArrGrp).map((menuArr, i) => {
-                  return (
+                menuArrGrp.sequence.map((itemsInMenu, i) => {
+                  console.log(`${i} =============> ${itemsInMenu}`)
+                  return menuArrGrp.data[itemsInMenu] && (
                     <MenuGroup id={`menu-group-${i}`} key={i} {...{
                       meta,
-                      menu: menuArrGrp[menuArr]
+                      menu: menuArrGrp.data[itemsInMenu]
                     }} />
                   )
                 })

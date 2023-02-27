@@ -2,7 +2,7 @@
 import { useContext, useEffect } from "react"
 import RestaurantContext from "../Contexts/RestaurantContext"
 const Menu = ({
-  collapsible, entities, name, perRow, subTitle, type
+  collapsible, entities, name, perRow, subTitle, type, widgets
 }) => {
 
   const { menuSelected } = useContext(RestaurantContext)
@@ -15,11 +15,15 @@ const Menu = ({
     TextClass = "text-sm text-rose-600"
   }
 
-  // final render
-  return (
-    <div className={MenuClass}>
-      <span className={TextClass}>{name}</span>
-    </div>
-  )
+  // final render, if their is some entities.
+  if (entities?.length || widgets?.length) {
+    return (
+      <div className={MenuClass}>
+        <span className={TextClass}>{name}</span>
+      </div>
+    )
+  } else {
+    console.log("menu don't require => ", name)
+  }
 }
 export default Menu

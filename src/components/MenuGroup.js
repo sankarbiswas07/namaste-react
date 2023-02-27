@@ -4,7 +4,7 @@ import MenuItem from "./MenuItem"
 import RestaurantContext from '../Contexts/RestaurantContext';
 
 const MenuGroup = ({ menu, meta }) => {
-  // console.log(menu)
+  console.log(menu)
   const ref = useRef(null)
   const isVisible = useOnScreen(ref)
 
@@ -13,12 +13,12 @@ const MenuGroup = ({ menu, meta }) => {
   useEffect(() => {
     if (isVisible) {
       setMenuSelected(menu[0].category)
-      console.log(`${(menu[0].category).toUpperCase()} - is visible now`)
+      // console.log(`${(menu[0].category).toUpperCase()} - is visible now`)
     }
   }, [isVisible])
 
 
-  if (!isVisible) console.log(`${(menu[0].category).toUpperCase()} - is not visible now`)
+  // if (!isVisible) console.log(`${(menu[0].category).toUpperCase()} - is not visible now`)
   // final render
   return (
     <div ref={ref} className="">
