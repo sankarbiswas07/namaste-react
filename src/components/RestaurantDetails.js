@@ -70,14 +70,15 @@ const RestaurantDetails = () => {
       <div className='mx-auto container'>
 
         <RestaurantContext.Provider value={{ menuSelected, setMenuSelected }}>
-          <div className='grid grid-cols-6 gap-0'>
+          <div className='grid grid-cols-4 gap-0'>
+
             {/* side menu list section */}
             <div className="pt-10 col-span-1 sticky top-[200px]">
               {/* widgets are the actual sequence which swiggy shows */}
               {widgets.map((value, i) => <Menu {...value} key={i} />)}
             </div>
             {/* main menu group */}
-            <div className="col-span-4
+            <div className="col-span-2
               row-span-2
               pt-10 pb-5 pl-8 pr-8
               border-l-[1px]

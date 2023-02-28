@@ -21,7 +21,7 @@ const MenuGroup = ({ menu, meta }) => {
   // if (!isVisible) console.log(`${(menu[0].category).toUpperCase()} - is not visible now`)
   // final render
   return (
-    <div ref={ref} className="">
+    <div ref={ref} id={menu[0].category}>
       <span className="decoration-4 font-extrabold">{(menu[0].category).toUpperCase()}</span>
       <div
         className="

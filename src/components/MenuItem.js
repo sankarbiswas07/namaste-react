@@ -16,12 +16,13 @@ const MenuItem = (item) => {
   return (
     <div
       className={itemTWClass}>
-      <div className="items-bottom">
-        <p>{name}</p>
+      <div className="items-bottom max-w-[400px] min-w-[200px]">
+        <p className="text-md text-gray-700 font-semibold">{name}</p>
         <p className="text-sm my-2 text-gray-700">₹ {price / 100}</p>
         <p className="text-xs text-gray-400 font-light">{description}</p>
       </div>
-      <div className="flex-start relative">
+      <div className="relative">
+        {/* <div className="flex-start relative"> */}
         <div className="w-[150] min-h-[90px] bg-gray-100">
           <img src={IMG_CDN_URL + cloudinaryImageId} />
         </div>
