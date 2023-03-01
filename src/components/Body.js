@@ -18,14 +18,14 @@ const Body = () => {
   if (!allRestaurants?.length) {
     // console.log("Calling useRestaurants")
     return (
-      <div className="flex flex-wrap relative">
+      <div className="flex flex-wrap w-3/4 mx-auto justify-between">
         {Array(30).fill("").map((e, i) => (<RestaurantCardSkeleton key={i} />))}
       </div>
     )
   }
 
   return (
-    <div className="flex flex-wrap container mx-auto">
+    <div className="flex flex-wrap w-3/4 container mx-auto justify-between">
       {
         allRestaurants.map(restaurant => {
           return (<RestaurantCard {...restaurant.data} key={restaurant.data.id} />)

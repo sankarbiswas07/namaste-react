@@ -3,21 +3,16 @@ import AddToCartButton from "./AddToCartButton"
 const Cart = ({
   name
 }) => {
-
-  //fetch react store slice
+  // fetch react store slice
   const cartItems = useSelector(store => store.cart.items)
   // console.log("cart js => ", Object.values(cartItems))
+
 
   return (
     <div className="min-w-[340px] max-w-[340px] pt-10 mx-auto p-[10px]">
       <div className="border-b-[1px] border-gray-300">
         <p className="text-2xl mb-3">Cart</p>
         <p className="text-sm font-light my-5">from <span className="text-rose-600 font-normal">{name}</span></p>
-        {/* <div className="my-5 justify-center flex">
-          <div className="py-2 border-1 border border-rose-600 w-[130] text-center">
-            <span>CLEAR CART</span>
-          </div>
-        </div> */}
       </div>
 
       <div className="min-h-[440px] max-h-[500px]  overflow-y-auto overflow-x-hidden">
@@ -46,7 +41,10 @@ const Cart = ({
 
       {/* Checkout button */}
       <div className="my-5 justify-center flex">
-        <div className="py-2 border-1 border border-rose-600 w-full text-center">
+        <div
+          className="py-2 border-1 border border-rose-600 w-full text-center"
+          onClick={() => doCheckout()}
+        >
           <span>CHECKOUT</span>
         </div>
       </div>
