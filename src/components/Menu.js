@@ -5,9 +5,9 @@ const Menu = ({
   collapsible, entities, name, perRow, subTitle, type, widgets
 }) => {
 
-  const { menuSelected } = useContext(RestaurantContext)
+  const { menuSelected, setMenuSelected } = useContext(RestaurantContext)
 
-  let MenuClass = "flex justify-end mt-3 mb-3 pr-10"
+  let MenuClass = "flex justify-end mt-3 mb-3 pr-10 cursor-pointer"
   let TextClass = "text-md font-semibold"
 
   if (menuSelected === name) {
@@ -18,12 +18,12 @@ const Menu = ({
   // final render, if their is some entities.
   if (entities?.length || widgets?.length) {
     return (
-      <div className={MenuClass}>
+      <div className={MenuClass} onClick={() => setMenuSelected(name)}>
         <span className={TextClass}>{name}</span>
       </div>
     )
   } else {
-    console.log("menu don't require => ", name)
+    // console.log("menu don't require => ", name)
   }
 }
 export default Menu

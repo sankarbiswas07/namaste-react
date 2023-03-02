@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { IMG_CDN_URL } from '../constants';
 import useRestaurant from '../hooks/useRestaurant';
 import RestaurantContext from "../Contexts/RestaurantContext"
 import Cart from './Cart';
@@ -28,8 +29,13 @@ const RestaurantDetails = () => {
   // re-render when state:restaurant dat changed by API call, it's trigger an re-render
   // initial render > Api call > re-render, restaurant has data now
   // re-conciliation happen, shimmer changed to the next `return (DOM)`
-  const { menu: { items: menuItems, widgets }, ...meta } = restaurant
-
+  console.log(restaurant)
+  const {
+    menu: { items: menuItems, widgets },
+    cloudinaryImageId,
+    name,
+    ...meta
+  } = restaurant
   // group as per category
   /**
    * - data: {} : will hold the actual grouping, so i can fetch at once.
@@ -64,14 +70,33 @@ const RestaurantDetails = () => {
     <div className='sticky top-0 bg-gray'>
       {/* Restaurant details with offer */}
       <div className="h-[200] bg-slate-900 sticky top-[0px] z-40">
-        <span className='text-2xl align-middle text-center font-color-gray-200'>SOME BANNER</span>
+        {/* <span className='text-2xl align-middle text-center font-color-gray-200'>SOME BANNER</span> */}
+        <div className="container mx-auto h-[200]">
+          <div className='grid grid-cols-4 gap-0'>
+            <div className="col-span-1 flex justify-end items-center">
+              <div className="w-[250] min-h-[150px] bg-gray-100 ">
+                <img className="" src={IMG_CDN_URL + cloudinaryImageId} />
+              </div>
+            </div>
+            <div className="col-span-2
+              row-span-2
+              pt-10 pb-5 pl-8 pr-8
+              border-l-[1px]
+            border-black"
+            >
+              details and search
+            </div>
+            <div className='col-span-1 sticky top-[200px]'>
+              offer
+            </div>
+          </div>
+        </div>
       </div>
       {/* menu section */}
       <div className='mx-auto container'>
 
         <RestaurantContext.Provider value={{ menuSelected, setMenuSelected }}>
           <div className='grid grid-cols-4 gap-0'>
-
             {/* side menu list section */}
             <div className="pt-10 col-span-1 sticky top-[200px]">
               {/* widgets are the actual sequence which swiggy shows */}
@@ -88,7 +113,7 @@ const RestaurantDetails = () => {
               {/*have to re arrange the list according to the menu - widget*/}
               {
                 menuArrGrp.sequence.map((itemsInMenu, i) => {
-                  console.log(`${i} =============> ${itemsInMenu}`)
+                  // console.log(`${i} =============> ${itemsInMenu}`)
                   return menuArrGrp.data[itemsInMenu] && (
                     <MenuGroup id={`menu-group-${i}`} key={i} {...{
                       meta,
