@@ -56,8 +56,8 @@ const Cart = ({
                 <div className="mr-3">
                   <AddToCartButton {...item} />
                 </div>
-                <div className="w-[100px] items-center align-middle text-right">
-                  <span className="text-xs text-gray-700 ">₹{(item.price / 100) * item?.orderCount}</span>
+                <div className="w-[100px] mx-2 text-right">
+                  <span className="text-xs text-gray-700 ">₹{(item.price) * item?.orderCount}</span>
                 </div>
               </div>
             )
