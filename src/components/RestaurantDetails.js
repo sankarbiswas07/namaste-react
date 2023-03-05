@@ -69,25 +69,64 @@ const RestaurantDetails = () => {
 
     <div className='sticky top-0 bg-gray'>
       {/* Restaurant details with offer */}
-      <div className="h-[200] bg-slate-900 sticky top-[0px] z-40">
-        {/* <span className='text-2xl align-middle text-center font-color-gray-200'>SOME BANNER</span> */}
-        <div className="container mx-auto h-[200]">
+      <div className="h-[250] bg-slate-800 sticky top-[0px] z-40 flex items-center">
+        <div className="mx-auto container justify-center items-center">
           <div className='grid grid-cols-4 gap-0'>
-            <div className="col-span-1 flex justify-end items-center">
-              <div className="w-[250] min-h-[150px] bg-gray-100 ">
+            <div className="col-span-1 flex justify-end">
+              <div className="w-[292] min-h-[150px] bg-gray-100 ">
                 <img className="" src={IMG_CDN_URL + cloudinaryImageId} />
               </div>
             </div>
             <div className="col-span-2
               row-span-2
-              pt-10 pb-5 pl-8 pr-8
-              border-l-[1px]
+              pl-8
+              text-gray-300
             border-black"
             >
-              details and search
+              <span className='text-3xl block text-gray-100'>{name}</span>
+
+              <div className='mt-3'>
+                <span className='text-md'>Opens {meta?.availability?.opened ? "till" : "at"} {meta?.availability?.nextCloseTime}</span>
+                <span className='text-md ml-5'>{(meta?.cuisines)?.join(", ")}</span>
+              </div>
+
+              <div className='mt-3'>
+                <span className='text-md'>{meta?.locality}</span>
+                <span className='text-md'>,&nbsp;{meta?.area}</span>
+              </div>
+
+              <div className='mt-3 flex w-1/2 justify-between'>
+                <div className='py-4 pr-6 border-r-[1px] border-gray-[200]'>
+                  <span className=''>{meta?.avgRatingString}</span>
+                  <p className='text-sm text-gray-300'>{meta?.totalRatingsString}</p>
+                </div>
+                <div className='p-4'>
+                  <span> * 4.0</span>
+                  <p className='text-sm text-gray-300'>1K+ rating</p>
+                </div>
+                <div className='py-4 pl-6 border-l-[1px] border-gray-[200]'>
+                  <span> * 4.0</span>
+                  <p className='text-sm text-gray-300'>1K+ rating</p>
+                </div>
+              </div>
             </div>
-            <div className='col-span-1 sticky top-[200px]'>
-              offer
+            <div className='col-span-1'>
+              <div className=' bg-slate-800'>
+                <div className='flex flex-col p-5 text-sm text-gray-300 border-2 border-gray-300 relative'>
+                  <div className='absolute -top-7 -left-5 bg-slate-800 px-3 py-3'>
+                    <span className='text-xl font-extrabold text-gray-100'>OFFER</span>
+                  </div>
+                  {
+                    meta?.aggregatedDiscountInfo?.descriptionList.map(e => {
+                      return (
+                        <div className='mt-3'>
+                          <span className=''>{e?.meta}</span>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -113,7 +152,6 @@ const RestaurantDetails = () => {
               {/*have to re arrange the list according to the menu - widget*/}
               {
                 menuArrGrp.sequence.map((itemsInMenu, i) => {
-                  // console.log(`${i} =============> ${itemsInMenu}`)
                   return menuArrGrp.data[itemsInMenu] && (
                     <MenuGroup id={`menu-group-${i}`} key={i} {...{
                       meta,
